@@ -34,13 +34,13 @@ class ProjectAgent:
             return torch.argmax(Q).item()
 
     def save(self, path):
-        self.path = path + "/model_david.pt"
+        self.path = path + "/model_tom.pt"
         torch.save(self.model.state_dict(), self.path)
         return 
 
     def load(self):
         device = torch.device('cpu')
-        self.path = os.getcwd() + "/model_david.pt"
+        self.path = os.getcwd() + "/model_tom.pt"
         self.model = self.myDQN({}, device)
         self.model.load_state_dict(torch.load(self.path, map_location=device))
         self.model.eval()
@@ -233,3 +233,13 @@ class ReplayBuffer:
         return list(map(lambda x:torch.Tensor(np.array(x)).to(self.device), list(zip(*batch))))
     def __len__(self):
         return len(self.data)
+    
+if __name__ == "__main__":
+    # Initialize the agent
+    agent = ProjectAgent()
+
+    # Train the agent
+    training_results = agent.train()
+
+    # Optional: Save or plot training results
+    print("Training completed")
