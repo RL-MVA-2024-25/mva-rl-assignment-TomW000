@@ -17,7 +17,7 @@ def seed_everything(seed: int = 42):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
     torch.cuda.manual_seed_all(seed)
-
+ 
 
 if __name__ == "__main__":
     file = Path("score.txt")
