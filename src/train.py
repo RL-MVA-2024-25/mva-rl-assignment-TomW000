@@ -45,7 +45,7 @@ class ProjectAgent:
         self.model.load_state_dict(torch.load(self.path, map_location=device))
         self.model.eval()
         return 
-    
+     
     # Now we add our methods
     # Function to take the greedy action
     def act_greedy(self, myDQN, state):
