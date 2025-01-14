@@ -1,4 +1,5 @@
 # Imports
+import os
 import random
 from copy import deepcopy
 
@@ -38,7 +39,7 @@ class ProjectAgent:
 
     def load(self):
         device = torch.device('cpu')
-        self.path = "/Users/tomw/Documents/RL/mva-rl-assignment-TomW000" + "/model.pt"
+        self.path = os.getcwd() + "/model.pt"
         self.model = self.myDQN({}, device)
         self.model.load_state_dict(torch.load(self.path, map_location=device))
         self.model.eval()
@@ -209,7 +210,7 @@ class ProjectAgent:
                 state = next_state
 
         self.model.load_state_dict(self.best_model.state_dict())
-        path = "/Users/tomw/Documents/RL/mva-rl-assignment-TomW000"
+        path = os.getcwd()
         self.save(path)
         return episode_return
 
